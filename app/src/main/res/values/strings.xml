@@ -1,4 +1,14 @@
 <resources>
     <!-- App Name -->
     <string name="app_name">Buy And Eat</string>
+
+    <!-- Auth -->
+    <string name="email">Email</string>
+    <string name="password">Senha</string>
+    <string name="login">Login</string>
+    <string name="signup">Cadastre-se</string>
+    <string name="forgot_password">Esqueceu a senha?</string>
+    <string name="enviar">Enviar</string>
+    <string name="recuperar_conta">Recuperar conta</string>
+    <string name="criar_conta">Criar Conta</string>
 </resources>

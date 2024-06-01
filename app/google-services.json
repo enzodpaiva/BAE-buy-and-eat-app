@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "56469437562",
+    "project_id": "buyandeatapp",
+    "storage_bucket": "buyandeatapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:56469437562:android:75c66739c9de683d224fc3",
+        "android_client_info": {
+          "package_name": "com.example.buyandeat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdZStmmjmzf6rUULjEoITzsm5KMwwJtUM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

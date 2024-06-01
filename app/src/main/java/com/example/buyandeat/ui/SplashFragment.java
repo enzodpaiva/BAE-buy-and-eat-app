@@ -3,16 +3,15 @@ package com.example.buyandeat.ui;
 import static androidx.navigation.Navigation.findNavController;
 
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.os.Handler;
 import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.example.buyandeat.R;
 import com.example.buyandeat.databinding.FragmentSplashBinding;
@@ -33,7 +32,7 @@ public class SplashFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        new Handler(Looper.getMainLooper()).postDelayed(this::checkUserLogged, 2000);
+        new Handler(Looper.getMainLooper()).postDelayed(this::checkUserLogged, 1000);
     }
 
     private void checkUserLogged() {
