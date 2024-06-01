@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">BuyAndEat</string>
+    <!-- App Name -->
+    <string name="app_name">Buy And Eat</string>
 </resources>
