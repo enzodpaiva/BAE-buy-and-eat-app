@@ -15,15 +15,16 @@ import androidx.fragment.app.Fragment;
 
 import com.example.buyandeat.R;
 import com.example.buyandeat.databinding.FragmentSplashBinding;
+import com.google.firebase.auth.FirebaseAuth;
 
 
 public class SplashFragment extends Fragment {
 
     private FragmentSplashBinding binding;
+    private FirebaseAuth mAuth;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentSplashBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
@@ -31,13 +32,16 @@ public class SplashFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        mAuth = FirebaseAuth.getInstance();
         new Handler(Looper.getMainLooper()).postDelayed(this::checkUserLogged, 1000);
     }
 
     private void checkUserLogged() {
-//        findNavController(requireView()).navigate(R.id.action_splashFragment_to_homeFragment);
-        findNavController(requireView()).navigate(R.id.action_splashFragment_to_auth);
+        if (mAuth.getCurrentUser() != null) {
+            findNavController(requireView()).navigate(R.id.action_splashFragment_to_homeFragment);
+        } else {
+            findNavController(requireView()).navigate(R.id.action_splashFragment_to_auth);
+        }
     }
 
     @Override
