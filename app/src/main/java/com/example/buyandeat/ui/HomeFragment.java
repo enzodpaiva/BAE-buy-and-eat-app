@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,8 +21,7 @@ public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
@@ -32,6 +32,7 @@ public class HomeFragment extends Fragment {
 
         binding.btnLogout.setOnClickListener(v -> {
             FirebaseAuth.getInstance().signOut();
+            Toast.makeText(requireContext(), "Deslogado com sucesso", Toast.LENGTH_SHORT).show();
             findNavController(requireView()).navigate(R.id.action_homeFragment_to_auth);
         });
     }

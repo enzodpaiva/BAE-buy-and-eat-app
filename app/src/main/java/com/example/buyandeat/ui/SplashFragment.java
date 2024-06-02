@@ -20,8 +20,9 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class SplashFragment extends Fragment {
 
+    private static final int SPLASH_TIME_SECONDS = 1;
+
     private FragmentSplashBinding binding;
-    private FirebaseAuth mAuth;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -32,12 +33,11 @@ public class SplashFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mAuth = FirebaseAuth.getInstance();
-        new Handler(Looper.getMainLooper()).postDelayed(this::checkUserLogged, 1000);
+        new Handler(Looper.getMainLooper()).postDelayed(this::checkUserLogged, SPLASH_TIME_SECONDS * 1000);
     }
 
     private void checkUserLogged() {
-        if (mAuth.getCurrentUser() != null) {
+        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
             findNavController(requireView()).navigate(R.id.action_splashFragment_to_homeFragment);
         } else {
             findNavController(requireView()).navigate(R.id.action_splashFragment_to_auth);

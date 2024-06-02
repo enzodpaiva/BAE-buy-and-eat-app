@@ -24,7 +24,6 @@ public class LoginFragment extends Fragment {
 
     private FragmentLoginBinding binding;
     private AuthFormValidate authFormValidate;
-    private FirebaseAuth mAuth;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -36,7 +35,6 @@ public class LoginFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         authFormValidate = new AuthFormValidate(binding.edtEmail, binding.tilEmail, binding.edtPassword, binding.tilPassword);
-        mAuth = FirebaseAuth.getInstance();
 
         setupClickListeners(view);
         authFormValidate.validateFormListener();
@@ -55,7 +53,7 @@ public class LoginFragment extends Fragment {
     }
 
     private void loginUser(View view, String email, String password) {
-        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(requireActivity(), new OnCompleteListener<AuthResult>() {
+        FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password).addOnCompleteListener(requireActivity(), new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
