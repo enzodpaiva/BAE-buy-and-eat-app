@@ -2,8 +2,12 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.BuyAndEat" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/primary</item>
     </style>
 
     <style name="Theme.BuyAndEat" parent="Base.Theme.BuyAndEat" />
+
+    <style name="HintText" parent="TextAppearance.Design.Hint">
+        <item name="android:textSize">16sp</item>
+    </style>
 </resources>
