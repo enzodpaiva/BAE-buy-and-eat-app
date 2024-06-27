@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.CartFragment">
+
+    <RelativeLayout
+        android:id="@+id/header_layout"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="#800000"
+        tools:ignore="MissingConstraints"
+        >
+
+        <Button
+            android:id="@+id/buttonBackToMenu"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:drawableTop="@drawable/arrow_back"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+             />
+
+        <TextView
+            android:id="@+id/textViewCartTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:text="Carrinho"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"/>
+
+    </RelativeLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewCart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewCartTitle"
+        android:padding="16dp"
+        android:layout_marginTop="120dp"
+        android:clipToPadding="false"
+        tools:ignore="NotSibling" />
+
+    <TextView
+        android:id="@+id/totalPriceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total: R$ 0.00"
+        android:layout_below="@id/recyclerViewCart"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:visibility="gone"
+        android:layout_marginTop="200dp"
+        android:textSize="18sp"/>
+
+    <Button
+        android:id="@+id/confirmOrderButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Confirmar Pedido"
+        android:layout_below="@id/totalPriceTextView"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"
+        android:layout_marginTop="16dp"/>
+    <TextView
+        android:id="@+id/textViewEmptyCart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#7A7A80"
+        android:layout_marginTop="350dp"
+        android:layout_centerHorizontal="true"
+        android:text="Seu carrinho está vazio"
+        android:textStyle="bold"
+        android:visibility="gone"
+        android:textSize="22sp" />
+</RelativeLayout>
