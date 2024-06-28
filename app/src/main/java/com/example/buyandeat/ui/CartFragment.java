@@ -4,8 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,7 +18,6 @@ import com.example.buyandeat.databinding.FragmentCartBinding;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.UUID;
 
 public class CartFragment extends Fragment {
 
@@ -73,7 +70,7 @@ public class CartFragment extends Fragment {
 
     private void updateTotalPrice() {
         double totalPrice = calculateTotalPrice();
-      binding.totalPriceTextView.setText(String.format("Total: R$ %.2f", totalPrice));
+        binding.totalPriceTextView.setText(String.format("Total: R$ %.2f", totalPrice));
     }
 
     private double calculateTotalPrice() {

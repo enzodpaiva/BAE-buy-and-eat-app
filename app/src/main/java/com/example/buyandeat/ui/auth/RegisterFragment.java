@@ -6,21 +6,21 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
 import com.example.buyandeat.R;
 import com.example.buyandeat.databinding.FragmentRegisterBinding;
 import com.example.buyandeat.helpers.AuthFormValidate;
+import com.example.buyandeat.helpers.BaseFragment;
+import com.example.buyandeat.helpers.FragmentHelper;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class RegisterFragment extends Fragment {
+public class RegisterFragment extends BaseFragment {
 
     private FragmentRegisterBinding binding;
     private AuthFormValidate authFormValidate;
@@ -35,6 +35,7 @@ public class RegisterFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        FragmentHelper.initToolbar(this, binding.toolbar);
         authFormValidate = new AuthFormValidate(binding.edtEmail, binding.tilEmail, binding.edtPassword, binding.tilPassword);
         mAuth = FirebaseAuth.getInstance();
 
@@ -44,11 +45,14 @@ public class RegisterFragment extends Fragment {
 
     private void setupClickListeners(View view) {
         binding.btnRegister.setOnClickListener(v -> {
-            binding.progressBar.setVisibility(View.VISIBLE);
 
             if (authFormValidate.isFormValid()) {
                 String email = binding.edtEmail.getText().toString();
                 String password = binding.edtPassword.getText().toString();
+
+                hideKeyboard();
+                binding.progressBar.setVisibility(View.VISIBLE);
+
                 registerUser(view, email, password);
             }
         });
@@ -59,11 +63,13 @@ public class RegisterFragment extends Fragment {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    Toast.makeText(requireContext(), "Usuário registrado com sucesso!\n" + email + " " + password, Toast.LENGTH_LONG).show();
-                    findNavController(view).navigate(R.id.action_global_homeFragment);
+                    FragmentHelper.showBottomSheet(RegisterFragment.this, R.string.message, R.string.ok, R.string.succes_register, () -> {
+                        findNavController(view).navigate(R.id.action_global_homeFragment);
+                    });
+
                 } else {
                     binding.progressBar.setVisibility(View.GONE);
-                    Toast.makeText(requireContext(), "Erro ao registrar usuário", Toast.LENGTH_LONG).show();
+                    FragmentHelper.showBottomSheet(RegisterFragment.this, R.string.atencao, R.string.ok, R.string.erro_register);
                 }
             }
         });

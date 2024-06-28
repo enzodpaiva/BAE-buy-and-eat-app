@@ -1,10 +1,11 @@
 package com.example.buyandeat.ui;
 
+import static androidx.navigation.Navigation.findNavController;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.buyandeat.R;
 import com.example.buyandeat.databinding.FragmentHomeBinding;
+import com.example.buyandeat.helpers.FragmentHelper;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
@@ -55,8 +57,9 @@ public class HomeFragment extends Fragment implements ProductAdapter.OnAddToCart
         // Configura o botão de logout
         binding.btnLogout.setOnClickListener(v -> {
             FirebaseAuth.getInstance().signOut();
-            Toast.makeText(requireContext(), "Deslogado com sucesso", Toast.LENGTH_SHORT).show();
-            Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_auth);
+            FragmentHelper.showBottomSheet(HomeFragment.this, R.string.message, R.string.ok, R.string.succes_signout, () -> {
+                findNavController(view).navigate(R.id.action_homeFragment_to_auth);
+            });
         });
 
         // Configura o botão de navegação para o carrinho
@@ -92,7 +95,7 @@ public class HomeFragment extends Fragment implements ProductAdapter.OnAddToCart
         if (!found) {
             cartItems.add(product);
         }
-        Toast.makeText(requireContext(), product.getName() + " adicionado ao carrinho", Toast.LENGTH_SHORT).show();
+        FragmentHelper.showBottomSheet(HomeFragment.this, R.string.message, R.string.ok, R.string.succes_cart);
         updateTotalPrice();
     }
 
