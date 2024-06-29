@@ -68,6 +68,15 @@
         android:layout_marginBottom="16dp"/>
 
 
+    <Button
+        android:id="@+id/btnManageProducts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gerenciar Produtos"
+        android:layout_marginTop="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </RelativeLayout>
 
 <!--<?xml version="1.0" encoding="utf-8"?>-->

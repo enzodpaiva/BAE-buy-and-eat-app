@@ -68,6 +68,10 @@ public class HomeFragment extends Fragment implements ProductAdapter.OnAddToCart
             bundle.putSerializable("cartItems", new ArrayList<>(cartItems));
             Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_cartFragment, bundle);
         });
+
+        binding.btnManageProducts.setOnClickListener(v -> {
+            findNavController(requireView()).navigate(R.id.action_homeFragment_to_manageProductsFragment);
+        });
     }
 
     // Método para criar produtos estáticos

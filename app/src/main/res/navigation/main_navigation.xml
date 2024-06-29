@@ -32,6 +32,32 @@
             app:destination="@id/auth"
             app:popUpTo="@id/homeFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_homeFragment_to_manageProductsFragment"
+            app:destination="@id/manageProductsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/manageProductsFragment"
+        android:name="com.example.buyandeat.ui.products.ManageProductsFragment"
+        android:label="fragment_manage_products"
+        tools:layout="@layout/fragment_manage_products" >
+        <action
+            android:id="@+id/action_manageProductsFragment_to_addProductFragment"
+            app:destination="@id/addProductFragment" />
+        <action
+            android:id="@+id/action_manageProductsFragment_to_splashFragment"
+            app:destination="@id/splashFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addProductFragment"
+        android:name="com.example.buyandeat.ui.products.AddProductFragment"
+        android:label="fragment_add_product"
+        tools:layout="@layout/fragment_add_product" >
+        <action
+            android:id="@+id/action_addProductFragment_to_manageProductsFragment"
+            app:destination="@id/manageProductsFragment" />
     </fragment>
 
     <fragment
