@@ -11,4 +11,6 @@
     <string name="enviar">Enviar</string>
     <string name="recuperar_conta">Recuperar conta</string>
     <string name="criar_conta">Criar Conta</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

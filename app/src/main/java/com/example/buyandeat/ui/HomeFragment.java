@@ -35,6 +35,10 @@ public class HomeFragment extends Fragment {
             Toast.makeText(requireContext(), "Deslogado com sucesso", Toast.LENGTH_SHORT).show();
             findNavController(requireView()).navigate(R.id.action_homeFragment_to_auth);
         });
+
+        binding.btnManageProducts.setOnClickListener(v -> {
+            findNavController(requireView()).navigate(R.id.action_homeFragment_to_manageProductsFragment);
+        });
     }
 
     @Override
